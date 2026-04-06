@@ -1,11 +1,12 @@
 "use client"; // Add this directive to make it a client component
 
 import React, { useState } from "react";
+import Reveal from "./reveal";
 
 const feeds = [
   {
     id: 1,
-    imageUrl: "/path-to-image1.jpg",
+    imageUrl: "https://placehold.co/350",
     video: true,
     videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
     videoId: "OwR74xSMX_Y",
@@ -13,7 +14,7 @@ const feeds = [
   },
   {
     id: 2,
-    imageUrl: "/path-to-image2.jpg",
+    imageUrl: "https://placehold.co/350",
     video: true,
     videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
     videoId: "OwR74xSMX_Y",
@@ -21,7 +22,7 @@ const feeds = [
   },
   {
     id: 3,
-    imageUrl: "/path-to-image3.jpg",
+    imageUrl: "https://placehold.co/350",
     video: true,
     videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
     videoId: "OwR74xSMX_Y",
@@ -29,52 +30,14 @@ const feeds = [
   },
   {
     id: 4,
-    imageUrl: "/path-to-image4.jpg",
+    imageUrl: "https://placehold.co/350",
     video: true,
     videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
     videoId: "OwR74xSMX_Y",
     instagramUrl: "https://www.instagram.com/reel/C8eQ-jzSqIX/?igsh=MW91MHJtaHJ3cXNkcQ==",
   },
-  {
-    id: 5,
-    imageUrl: "/path-to-image5.jpg",
-    video: true,
-    videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
-    videoId: "OwR74xSMX_Y",
-    instagramUrl: "https://www.instagram.com/reel/C9mSarMSrAd/?igsh=MXhvamxxc2NvaDhxcg==",
-  },
-  {
-    id: 6,
-    imageUrl: "/path-to-image6.jpg",
-    video: true,
-    videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
-    videoId: "OwR74xSMX_Y",
-    instagramUrl: "https://www.instagram.com/reel/C_FGYaTy_Wb/?igsh=aXR4YXFqMzZ0dDFj",
-  },
-  {
-    id: 7,
-    imageUrl: "/path-to-image6.jpg",
-    video: true,
-    videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
-    videoId: "OwR74xSMX_Y",
-    instagramUrl: "https://www.instagram.com/reel/C19icfohuSo/?igsh=MXRwNXZ6eXFvZ2hsag==",
-  },
-  {
-    id: 8,
-    imageUrl: "/path-to-image6.jpg",
-    video: true,
-    videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
-    videoId: "OwR74xSMX_Y",
-    instagramUrl: "https://www.instagram.com/reel/C19icfohuSo/?igsh=MXRwNXZ6eXFvZ2hsag==",
-  },
-  {
-    id: 9,
-    imageUrl: "/path-to-image6.jpg",
-    video: true,
-    videoUrl: "https://youtube.com/shorts/GyBpRLRzbmY?si=DUxg6PCf5cNygjFr",
-    videoId: "OwR74xSMX_Y",
-    instagramUrl: "https://www.instagram.com/reel/C19icfohuSo/?igsh=MXRwNXZ6eXFvZ2hsag==",
-  },
+  
+  
 ];
 
 const Feeds: React.FC = () => {
@@ -96,16 +59,14 @@ const Feeds: React.FC = () => {
 
   return (
     <>
-      <div className="py-4 bg-white">
-        <h2 className="text-center text-2xl font-bold mb-4 bg-white text-black py-4">
+      <div className="bg-[#060b16] py-12">
+        <h2 className="mb-8 bg-gradient-to-r from-cyan-200 via-slate-100 to-violet-200 bg-clip-text py-1 text-center text-2xl font-black text-transparent md:text-3xl">
           LIVE FEEDS
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-9 px-4 lg:px-0">
-          {feeds.map((feed) => (
-            <div
-              key={feed.id}
-              className="relative w-full h-64 md:h-72 bg-gray-200  overflow-hidden shadow-lg"
-            >
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:grid-cols-4 lg:px-6">
+          {feeds.map((feed, index) => (
+            <Reveal key={feed.id} delay={index * 90}>
+              <div className="site-panel relative h-64 w-full overflow-hidden rounded-2xl border border-cyan-300/20 bg-[#0a1222] shadow-lg md:h-72">
               {feed.video ? (
                 <>
                   {playingVideos[feed.id] ? (
@@ -121,13 +82,13 @@ const Feeds: React.FC = () => {
                   ) : (
                     <>
                       <img
-                        src={`https://img.youtube.com/vi/${feed.videoId}/hqdefault.jpg`}
+                        src={feed.imageUrl}
                         alt={`Feed ${feed.id}`}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/25">
                         <button
-                          className="text-slate-500 rounded-full p-2"
+                          className="rounded-full border border-cyan-200/40 bg-[#050913]/70 p-2 text-cyan-100"
                           onClick={() => togglePlay(feed.id)}
                         >
                           <svg
@@ -162,7 +123,7 @@ const Feeds: React.FC = () => {
                 href={feed.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute right-2 bottom-2"
+                className="absolute bottom-2 right-2"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -174,7 +135,7 @@ const Feeds: React.FC = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-pink-500"
+                  className="text-fuchsia-300"
                 >
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -196,13 +157,14 @@ const Feeds: React.FC = () => {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-gray-700"
+                  className="text-cyan-100"
                 >
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                 </svg>
               </button>
-            </div>
+              </div>
+            </Reveal>
           ))}
         </div>
       </div>

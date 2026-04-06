@@ -1,85 +1,91 @@
 import React from "react";
+import Reveal from "./reveal";
 
 const Home: React.FC = () => {
   return (
     <>
-      <div className="flex flex-col justify-center items-center px-4 lg:px-44 my-6 space-y-2">
-        <h3 className="text-3xl lg:text-5xl text-white uppercase">
+      <div className="mb-6 mt-10 flex flex-col items-center justify-center space-y-2 px-4 lg:px-44">
+        <h3 className="bg-gradient-to-r from-cyan-200 via-slate-100 to-violet-200 bg-clip-text text-3xl font-black uppercase text-transparent lg:text-5xl">
           Learning Methods
         </h3>
-        <div className="lg:w-1/2 w-full bg-yellow-400 h-1 rounded-full"></div>
+        <div className="h-1 w-full rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 lg:w-1/2" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-4 lg:hidden my-4 align-middle">
-        <div className="flex flex-col space-y-5 border p-4">
-          <div className="flex items-center justify-center bg-[#f88e2d] h-44 rounded-2xl text-4xl text-black font-bold">
-            चित्त{" "}
-          </div>
-          <h3 className="text-3xl">Step 1</h3>
-          <p className="text-">
-            A thought is a fleeting whisper of the mind, shaping the contours of
-            our reality.
-          </p>
-        </div>
-        <div className="flex flex-col space-y-5 border p-4">
-          <div className="flex items-center justify-center bg-[#f51b68] h-44 rounded-2xl text-4xl text-white font-bold">
-            कला कृति
-          </div>
-          <h3 className="text-3xl">Step 2</h3>
-          <p className="text-">
-            Artwork design infused with creativity captures the essence of
-            imagination, transforming blank spaces into vibrant expressions that
-            stir the senses and inspire awe.
-          </p>
-        </div>
-        <div className="flex flex-col space-y-5 border p-4">
-          <div className="flex items-center justify-center bg-[#30d3ec] h-44 rounded-2xl text-4xl text-black font-bold">
-            चलचित्र
-          </div>
-          <h3 className="text-3xl">Step 3</h3>
-          <p className="text-">
-            Motion art seamlessly blends visual elements with movement, creating
-            an immersive experience that dances across the screen, captivating
-            audiences with its dynamic allure.
-          </p>
-        </div>
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-4 md:grid-cols-2 lg:hidden">
+        {[
+          {
+            title: "Step 1",
+            symbol: "चित्त",
+            color: "from-amber-400 to-orange-500",
+            text: "A thought is a fleeting whisper of the mind, shaping the contours of our reality.",
+          },
+          {
+            title: "Step 2",
+            symbol: "कला कृति",
+            color: "from-fuchsia-500 to-rose-500",
+            text: "Artwork infused with creativity transforms blank spaces into expressions that inspire awe.",
+          },
+          {
+            title: "Step 3",
+            symbol: "चलचित्र",
+            color: "from-cyan-400 to-sky-500",
+            text: "Motion art blends visuals and movement into immersive experiences that captivate audiences.",
+          },
+        ].map((card, index) => (
+          <Reveal key={card.title} delay={index * 100}>
+            <div className="site-panel flex h-full flex-col space-y-4 rounded-2xl p-4">
+              <div className={`flex h-36 items-center justify-center rounded-2xl bg-gradient-to-r text-4xl font-black text-white ${card.color}`}>
+                {card.symbol}
+              </div>
+              <h3 className="text-2xl font-bold text-slate-100">{card.title}</h3>
+              <p className="text-slate-300">{card.text}</p>
+            </div>
+          </Reveal>
+        ))}
       </div>
-      <div className="bg-black text-white min-h-screen  w-full relative overflow-hidden hidden lg:block">
+      <div className="relative hidden min-h-screen w-full overflow-hidden bg-[#050913] text-white lg:block">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(255,82,200,0.12),transparent_35%),radial-gradient(circle_at_20%_60%,rgba(51,214,255,0.14),transparent_45%)]" />
         {/* Circular Diagram and Text Steps */}
-        <div className="flex flex-col lg:flex-row w-full items-center md:w-1/2 z-50">
+        <div className="relative z-10 flex w-full flex-col items-center lg:flex-row md:w-1/2">
           {/* Left Side: Circular Diagram */}
-          <div className="w-[1300px] h-full z-50">
+          <Reveal className="w-[1300px] h-full z-50" y={10}>
             <img
               src="https://ccdstest.b-cdn.net/Arambhakala/chakra.webp"
               alt=""
               className=" object-contain w-full h-full z-50"
             />
-          </div>
+          </Reveal>
 
           {/* Right Side: Text Steps */}
-          <div className="space-y-16 mt-8 lg:mt-0 text-lg -ml-16 z-50">
-            <div className="space-y-2">
-              <h3 className="text-yellow-300 text-4xl">Step 1</h3>
-              <p className="text-2xl z-50">
+          <div className="-ml-16 mt-8 space-y-12 text-lg z-50 lg:mt-0">
+            <Reveal delay={80}>
+              <div className="space-y-2 rounded-2xl border border-amber-300/30 bg-amber-400/10 p-5">
+                <h3 className="text-4xl text-amber-300">Step 1</h3>
+                <p className="text-2xl text-slate-200 z-50">
                 A thought is a fleeting whisper of the mind, shaping the
                 contours of our reality.
               </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-pink-500 text-4xl">Step 2</h3>
-              <p className="text-2xl z-50">
+              </div>
+            </Reveal>
+            <Reveal delay={150}>
+              <div className="space-y-2 rounded-2xl border border-fuchsia-300/30 bg-fuchsia-400/10 p-5">
+                <h3 className="text-4xl text-fuchsia-300">Step 2</h3>
+                <p className="text-2xl text-slate-200 z-50">
                 Artwork design infused with creativity captures the essence of
                 imagination, transforming blank spaces into vibrant expressions
                 that stir the senses and inspire awe.
               </p>
-            </div>
-            <div className="space-y-2">
-              <h3 className="text-blue-400 text-4xl">Step 3</h3>
-              <p className="text-2xl z-50">
+              </div>
+            </Reveal>
+            <Reveal delay={220}>
+              <div className="space-y-2 rounded-2xl border border-cyan-300/30 bg-cyan-400/10 p-5">
+                <h3 className="text-4xl text-cyan-300">Step 3</h3>
+                <p className="text-2xl text-slate-200 z-50">
                 Motion art seamlessly blends visual elements with movement,
                 creating an immersive experience that dances across the screen,
                 captivating audiences with its dynamic allure.
               </p>
-            </div>
+              </div>
+            </Reveal>
           </div>
         </div>
 

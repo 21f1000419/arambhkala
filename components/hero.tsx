@@ -3,7 +3,8 @@ import { FC } from "react";
 const Hero: FC = () => {
   return (
     <>
-      <div className="relative w-full h-screen bg-black overflow-hidden">
+      <div className="relative h-screen w-full overflow-hidden bg-[#050913]">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(51,214,255,0.2),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(141,125,255,0.24),transparent_40%),linear-gradient(180deg,rgba(6,9,19,0.4),rgba(5,8,15,0.95))]" />
         {/* Animated Stars */}
         {/* Animated Stars */}
         <div className="absolute top-0 left-0 w-full h-full mt-10">
@@ -101,9 +102,9 @@ const Hero: FC = () => {
         </div>
 
         {/* Center Logo */}
-        <div className="flex justify-center items-center w-full h-full relative z-10 text-center">
-          <div>
-            <div className="w-80 rounded-full flex items-center justify-center shadow-[0_0_20px_5px_rgba(252,211,77,0.6)]">
+        <div className="reveal-section is-visible flex h-full w-full items-center justify-center text-center relative z-10">
+          <div className=" rounded-[2rem] p-6 sm:p-8">
+            <div className="mx-auto flex w-72 items-center justify-center rounded-full shadow-[0_0_35px_6px_rgba(51,214,255,0.38)] sm:w-80">
               <img
                 src="https://ccdstest.b-cdn.net/Arambhakala/stars%20and%20clouds/arambhakala-logo.png"
                 alt="Aramhkala Foundation Logo"
@@ -111,8 +112,10 @@ const Hero: FC = () => {
               />
             </div>
 
-            <h1 className="text-white text-2xl mt-4 font-bold">ARAMBHKALA FOUNDATION</h1>
-            <p className="text-white text-lg">House Of Arts & Technology</p>
+            <h1 className="mt-4 bg-gradient-to-r from-cyan-200 via-slate-100 to-violet-200 bg-clip-text text-2xl font-black text-transparent sm:text-3xl">
+              ARAMBHKALA FOUNDATION
+            </h1>
+            <p className="text-base text-slate-200 sm:text-lg">House Of Arts & Technology</p>
           </div>
         </div>
 
