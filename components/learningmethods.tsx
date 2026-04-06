@@ -59,8 +59,8 @@ const Home: React.FC = () => {
           <div className="-ml-16 mt-8 space-y-12 text-lg z-50 lg:mt-0">
             <Reveal delay={80}>
               <div className="space-y-2 rounded-2xl border border-amber-300/30 bg-amber-400/10 p-5">
-                <h3 className="text-4xl text-amber-300">Step 1</h3>
-                <p className="text-2xl text-slate-200 z-50">
+                <h3 className="text-2xl 2xl:text-4xl text-amber-300">Step 1</h3>
+                <p className="text-sm 2xl:text-2xl text-slate-200 z-50">
                 A thought is a fleeting whisper of the mind, shaping the
                 contours of our reality.
               </p>
@@ -68,8 +68,8 @@ const Home: React.FC = () => {
             </Reveal>
             <Reveal delay={150}>
               <div className="space-y-2 rounded-2xl border border-fuchsia-300/30 bg-fuchsia-400/10 p-5">
-                <h3 className="text-4xl text-fuchsia-300">Step 2</h3>
-                <p className="text-2xl text-slate-200 z-50">
+                <h3 className="text-2xl 2xl:text-4xl text-fuchsia-300">Step 2</h3>
+                <p className="text-sm 2xl:text-2xl text-slate-200 z-50">
                 Artwork design infused with creativity captures the essence of
                 imagination, transforming blank spaces into vibrant expressions
                 that stir the senses and inspire awe.
@@ -78,8 +78,8 @@ const Home: React.FC = () => {
             </Reveal>
             <Reveal delay={220}>
               <div className="space-y-2 rounded-2xl border border-cyan-300/30 bg-cyan-400/10 p-5">
-                <h3 className="text-4xl text-cyan-300">Step 3</h3>
-                <p className="text-2xl text-slate-200 z-50">
+                <h3 className="text-2xl 2xl:text-4xl text-cyan-300">Step 3</h3>
+                <p className="text-sm 2xl:text-2xl text-slate-200 z-50">
                 Motion art seamlessly blends visual elements with movement,
                 creating an immersive experience that dances across the screen,
                 captivating audiences with its dynamic allure.
@@ -100,9 +100,9 @@ const Home: React.FC = () => {
             />
 
             {/* Stars and Clouds */}
-            <div className="absolute top-24 right-36 w-28 h-28 z-50">
+            <div className="absolute hidden top-24 right-36 w-28 h-28 z-50">
               <video
-                className="w-full h-full object-cover"
+                className="w-full h-full bg-white object-cover"
                 autoPlay
                 muted
                 loop
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
                 className="animate-pulse"
               />
             </div>
-            <div className="absolute top-32 right-[600px] w-28 h-28 z-50">
+            <div className="absolute hidden top-32 right-[600px] w-28 h-28 z-50">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
@@ -163,7 +163,7 @@ const Home: React.FC = () => {
                 alt="Star"
               />
             </div>
-            <div className="absolute bottom-60 right-[600px] w-28 h-28 z-50">
+            <div className="absolute hidden bottom-60 right-[600px] w-28 h-28 z-50">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
